@@ -1,0 +1,48 @@
+{% extends 'seller/base.html' %}
+
+{% block title %}
+    增加用户
+{% endblock %}
+
+{% block label %}
+    增加用户
+{% endblock %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="table">
+        <tr>
+            <td rowspan="4" width="300px">
+                <p>添加用户头像：</p>
+{#                <img style="width: 300px;height: 300px;" src="/static/seller/{{ user.photo }}" alt="用户头像" >#}
+                <input type="file" name="photo" >
+            </td>
+            <th>姓名：</th>
+            <td><input type="text" name="username"><span style="color: red;">*</span></td>
+            <th>性别：</th>
+            <td><input  type="text" name="gender"></td>
+        </tr>
+        <tr>
+            <th>年龄：</th>
+            <td><input  type="text" name="age"></td>
+            <th>电话：</th>
+            <td><input  type="text" name="phonenumber"></td>
+        </tr>
+        <tr>
+            <th>邮箱：</th>
+            <td><input  type="email" name="email"><span style="color: red;">*</span></td>
+            <th>地址：</th>
+            <td><input type="text" name="address"></td>
+        </tr>
+        <tr>
+            <th>密码：</th>
+            <td><input type="password" name="password"><span style="color: red;">*</span></td>
+            <th colspan="2" style="text-align: center">
+                <input type="submit" value="提交用户信息" class="btn btn-warning btn-block">
+            </th>
+        </tr>
+        <p style="color: red">{{ error_message }}</p>
+    </table>
+    </form>
+{% endblock %}

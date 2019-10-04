@@ -1,0 +1,44 @@
+{% extends 'seller/base.html' %}
+
+{% block title %}
+    个人信息
+{% endblock %}
+
+{% block label %}
+    个人信息
+{% endblock %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table class="table">
+        <tr>
+            <td rowspan="4" width="300px">
+                <img style="width: 300px;height: 300px;" src="/static/seller/{{ user.photo }}" alt="用户头像" >
+                <input type="file" name="photo" ><span style="color: red;">*</span>
+            </td>
+            <th>姓名：</th>
+            <td><input value="{{ user.username }}" name="username"><span style="color: red;">*</span></td>
+            <th>性别：</th>
+            <td><input value="{{ user.gender }}" name="gender"><span style="color: red;">*</span></td>
+        </tr>
+        <tr>
+            <th>年龄：</th>
+            <td><input value="{{ user.age }}" name="age"><span style="color: red;">*</span></td>
+            <th>电话：</th>
+            <td><input value="{{ user.phonenumber }}" name="phonenumber"><span style="color: red;">*</span></td>
+        </tr>
+        <tr>
+            <th>邮箱：</th>
+            <td><input value="{{ user.email }}" name="email" disabled></td>
+            <th>地址：</th>
+            <td><input value="{{ user.address }}" name="address"><span style="color: red;">*</span></td>
+        </tr>
+        <tr>
+            <th colspan="4" style="text-align: center">
+                <input type="submit" value="提交用户信息" class="btn btn-warning btn-block">
+            </th>
+        </tr>
+    </table>
+    </form>
+{% endblock %}
